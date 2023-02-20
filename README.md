@@ -67,12 +67,12 @@ Goodbye, Bob!
 
 $ login Alice
 Hello, Alice!
-Your balance is $210
+Your balance is $280
 Owed $40 from Bob
 
 $ transfer Bob 30
 Your balance is $250
-Owed $10 from Bob2
+Owed $10 from Bob
 
 $ logout
 Goodbye, Alice!
