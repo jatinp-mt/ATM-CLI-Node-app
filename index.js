@@ -126,7 +126,7 @@ const transfer = () => {
         } else if (loginUser.balance === 0) {
             console.log(`Insufficient balance!`);
         } else {
-            initialTransfer(user, loginUser, name);
+            initiateTransfer(user, loginUser, name);
         }
     });
 }
@@ -154,7 +154,7 @@ const getCurrentUser = (userName) => {
 }
 
 // Initiate transfer
-const initialTransfer = (user, loginUser, name) => {
+const initiateTransfer = (user, loginUser, name) => {
     // Ask the amount to be transfered.
     rl.question('Please enter amount: ', (amount) => {
         if (loginUser.balance < amount && !loginUser?.owed?.isOwed) {
