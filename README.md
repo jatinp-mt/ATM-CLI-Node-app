@@ -95,3 +95,7 @@ Goodbye, Bob!
 You can learn more about Node check the [Node documentation](https://nodejs.org/en/).
 
 To learn Readline, check out the [Readline](https://nodejs.org/api/readline.html).
+
+## Note
+I didn't use any storage as of now, I am managing this all with the help of one global variable which means the data get reset on every restart of the CLI application.
+Also the users are identified with the help of name which is case sensitive.
