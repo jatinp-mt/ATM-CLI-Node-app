@@ -84,24 +84,38 @@ const deposit = () => {
 
             // Check the deposite amount is smaller then current balance
             if (user.balance < amount) {
-                // Owed amount 
-                const owedAmount = Number(user?.owed?.owedAmount) > Number(amount) ? Number(user?.owed?.owedAmount) - Number(amount) : Number(amount) - Number(user?.owed?.owedAmount);
 
-                // First deadict the amount from the logged-in user from bank balance.
-                user.owed.isOwed = true;
-                user.balance = 0;
-                user.owed.owedAmount = owedAmount;
+                if (Number(user?.owed?.owedAmount) < Number(amount)) {
 
-                // Update the receiver user
-                owedToUser.owed.owedAmount = owedAmount;
+                    // First deadict the amount from the logged-in user from bank balance.
+                    user.owed.isOwed = false;
+                    user.balance = Number(amount) - Number(user?.owed?.owedAmount);
+                    user.owed.owedAmount = 0;
 
-                // Add the amount to the receiver bank balance.
-                owedToUser.balance = Number(owedToUser.balance) + Number(amount)
+                    // Print answers
+                    console.log(`Transferred $${user?.owed?.owedAmount} to ${owedToUser.owed.owedTo}`);
+                    console.log(`Your Balance is $${user.balance}`);
 
-                // Print answers
-                console.log(`Transferred $${amount} to ${owedToUser.owed.owedTo}`);
-                console.log(`Your Balance is $${user.balance}`);
-                console.log(`Owed $${owedAmount} to ${owedToUser.owed.owedTo}`);
+                } else {
+                    // Owed amount 
+                    const owedAmount = Number(user?.owed?.owedAmount) > Number(amount) ? Number(user?.owed?.owedAmount) - Number(amount) : Number(amount) - Number(user?.owed?.owedAmount);
+
+                    // First deadict the amount from the logged-in user from bank balance.
+                    user.owed.isOwed = true;
+                    user.balance = 0;
+                    user.owed.owedAmount = owedAmount;
+
+                    // Update the receiver user
+                    owedToUser.owed.owedAmount = owedAmount;
+
+                    // Add the amount to the receiver bank balance.
+                    owedToUser.balance = Number(owedToUser.balance) + Number(amount)
+
+                    // Print answers
+                    console.log(`Transferred $${amount} to ${owedToUser.owed.owedTo}`);
+                    console.log(`Your Balance is $${user.balance}`);
+                    console.log(`Owed $${owedAmount} to ${owedToUser.owed.owedFrom}`);
+                }
             }
         } else {
             // Calculate and update the balance
