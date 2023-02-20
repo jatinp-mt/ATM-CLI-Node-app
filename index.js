@@ -93,7 +93,7 @@ const deposit = () => {
                     user.owed.owedAmount = 0;
 
                     // Print answers
-                    console.log(`Transferred $${user?.owed?.owedAmount} to ${owedToUser.owed.owedTo}`);
+                    console.log(`Transferred $${Number(amount) - Number(user?.balance)} to ${owedToUser.owed.owedTo}`);
                     console.log(`Your Balance is $${user.balance}`);
 
                 } else {
